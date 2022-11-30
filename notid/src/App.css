@@ -38,6 +38,8 @@ button:hover {
 /* SIDEBAR STYLES */
 
 .app-sidebar {
+  display: flex;
+  flex-direction: column;
   width: 30%;
   height: 100vh;
   border-right: 1px solid #ddd;
@@ -53,7 +55,7 @@ button:hover {
 }
 
 .app-sidebar-notes {
-  height: calc(100vh - 78px);
+  flex-shrink: 1;
   overflow-y: scroll;
 }
 .app-sidebar-note {

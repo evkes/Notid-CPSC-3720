@@ -1,8 +1,11 @@
+import FullCalendar from '@fullcalendar/react' // https://fullcalendar.io/docs/month-view
+import dayGridPlugin from '@fullcalendar/daygrid'
+
 function Sidebar(){
     return (
         <div className="app-sidebar">
             <div className="app-sidebar-header">
-                <h1>Notes</h1>
+                <h1>NoteID</h1>
                 <button>Add</button>
             </div>
             <div className="app-sidebar-notes">
@@ -19,6 +22,13 @@ function Sidebar(){
                 
                 </div>
             </div>
+            <div className="app-sidebar-calendar">
+            <FullCalendar
+                plugins={[ dayGridPlugin ]}
+                initialView="dayGridMonth"
+                showNonCurrentDates={false}
+                />
+            </div>   
         </div>
     );
         
