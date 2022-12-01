@@ -1,26 +1,65 @@
 import FullCalendar from '@fullcalendar/react' // https://fullcalendar.io/docs/month-view
 import dayGridPlugin from '@fullcalendar/daygrid'
+import { useState, useEffect } from 'react';
+import NotesList from './components/NotesList';
+import Search from './components/Search';
 
-function Sidebar(){
+const Sidebar = () => {
+    const [notes, setNotes] = useState([]);
+
+	const [searchText, setSearchText] = useState('');
+
+	useEffect(() => {
+		const savedNotes = JSON.parse(
+			localStorage.getItem('react-notes-app-data')
+		);
+
+		if (savedNotes) {
+			setNotes(savedNotes);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(
+			'react-notes-app-data',
+			JSON.stringify(notes)
+		);
+	}, [notes]);
+
+	const deleteNote = (id) => {
+		const newNotes = notes.filter((note) => note.id !== id);
+		setNotes(newNotes);
+	};
+
     return (
         <div className="app-sidebar">
             <div className="app-sidebar-header">
                 <h1>NoteID</h1>
-                <button>Add</button>
+                <button className="add">Add</button>
             </div>
+            
+            <div className='container'>
+                <Search handleSearchNote={setSearchText} />
+                
+        </div>
+            
             <div className="app-sidebar-notes">
-                <div className="app-sidebar-note">
+            <div className="app-sidebar-note">
                     <div className="sidebar-note-title">
-
-                        <strong>Title</strong>
+                    
+                        <strong>Hello World</strong>
                         <button>Delete</button>
 
                     </div>
 
-                <p>Note preview</p>
-                <small className="note-meta">Last modified [date]</small>
+                <p>Sample Text</p>
+                <small className="note-meta">Last modified [Sample Date]</small>
                 
-                </div>
+            </div>
+                <NotesList
+                    notes={notes}
+                    handleDeleteNote={deleteNote}
+                />
             </div>
             <div className="app-sidebar-calendar">
             <FullCalendar
