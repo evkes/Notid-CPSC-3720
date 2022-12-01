@@ -7,9 +7,9 @@ import Search from './components/Search';
 const Sidebar = () => {
     const [notes, setNotes] = useState([]);
 
-	const [searchText, setSearchText] = useState('');
+	const [setSearchText] = useState('');
 
-	useEffect(() => {
+    useEffect(() => {
 		const savedNotes = JSON.parse(
 			localStorage.getItem('react-notes-app-data')
 		);
@@ -25,6 +25,8 @@ const Sidebar = () => {
 			JSON.stringify(notes)
 		);
 	}, [notes]);
+
+    
 
 	const deleteNote = (id) => {
 		const newNotes = notes.filter((note) => note.id !== id);

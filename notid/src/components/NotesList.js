@@ -4,6 +4,7 @@ const NotesList = ({
 	notes,
 	handleDeleteNote,
 }) => {
+	
 	return (
 		<div className='notes-list'>
 			{notes.map((note) => (

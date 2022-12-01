@@ -2,7 +2,8 @@ import './App.css';
 import Sidebar from './Sidebar';
 import Main from './Main';
 
-function App() {
+const App = () => {
+  
   return (
     <div className="App">
       <Sidebar />
