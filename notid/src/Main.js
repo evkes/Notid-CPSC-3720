@@ -42,12 +42,8 @@ const Main = () => {
 	};
 
 	return (
-        <div className='container'>
+        <div className='app-main-container'>
             <Header></Header>
-            <NotesList
-                notes={notes}
-                handleDeleteNote={deleteNote}
-            />
             <AddNote handleAddNote={addNote}></AddNote>
         </div>
 	);
