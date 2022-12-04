@@ -7,10 +7,15 @@ import AddNote from './components/AddNote';
 import FullCalendar from '@fullcalendar/react' // https://fullcalendar.io/docs/month-view
 import dayGridPlugin from '@fullcalendar/daygrid'
 import Search from './components/Search';
+import Note from './components/Note';
 
 const App = () => {
   const [notes, setNotes] = useState([
 	]);
+
+  const [displayFolderId, setDisplayFolderId] = useState(null);
+
+  const [displayNotes, setDisplayNotes] = useState(notes);
 
 	useEffect(() => {
 		const savedNotes = window.localStorage.getItem('react-notes-app-data');
@@ -22,27 +27,95 @@ const App = () => {
 			'react-notes-app-data',
 			JSON.stringify(notes)
 		);
+    setDisplayNotes(notes);
 	}, [notes]);
+
+  useEffect(() => {
+    console.log(displayFolderId)
+    if (displayFolderId !== null) {
+      setDisplayNotes(notes.find((element) => element.id === displayFolderId).notes);
+    }
+    else {
+      setDisplayNotes(notes);
+    }
+	}, [displayFolderId]);
 
   const [setSearchText] = useState('');
 
-	const addNote = (title, text) => {
+	const addNote = (title, text, folderTitle = null) => {
 		const date = new Date();
 		const newNote = {
 			id: nanoid(),
-            title: title,
+      title: title,
 			text: text,
+      type: "Note",
+      parentId: null,
 			date: date.toLocaleDateString(),
 		};
-		const newNotes = [...notes, newNote];
+    let folder = notes.find(note => note.type === "Folder" && note.title === folderTitle); 
+		const newNotes = [...notes];
+    if (folderTitle) {
+      if (!folder) {
+        folder = addFolder(folderTitle);
+      }
+      const folderIndex = newNotes.indexOf(folder);
+      newNote.parentId = folder.id;
+      // Deletes the folder in order to append a new note 
+      if (folderIndex !== -1) {
+        newNotes.splice(folderIndex, 1);
+      }
+      folder.notes.push(newNote);
+      newNotes.push(folder);
+    }
+    else {
+      newNotes.push(newNote);
+    }
+		setNotes(newNotes);
+    
+	};
+  const addFolder = (title) => {
+		const date = new Date();
+		const newFolder = {
+			id: nanoid(),
+      title: title,
+			notes: [],
+      type: "Folder",
+			date: date.toLocaleDateString(),
+		};
+    return newFolder;
+  }
+
+	const deleteNote = (id, folderId) => {
+    const folder = notes.find(note => note.type === "Folder" && note.id === folderId);
+		let newNotes = [...notes];
+    if (folder) {
+      newNotes.remove(newNotes.indexOf(folder));
+      folder.notes = folder.notes.filter((note) => note.id !== id);
+      newNotes.push(folder);
+    }
+    else {
+      // Deletes from top level if not within a folder
+      newNotes = newNotes.filter((note) => note.id !== id); 
+    }
 		setNotes(newNotes);
 	};
 
-	const deleteNote = (id) => {
-		const newNotes = notes.filter((note) => note.id !== id);
+  const deleteFolder = (folderId) => {
+		const newNotes = notes.filter((note) => note.type === "Folder" && note.id !== folderId);
 		setNotes(newNotes);
 	};
 
+  const showFoldersOnly = () => {
+    return notes.filter((note) => note.type === "Folder");
+  }
+
+  const handleOnClickFolder = (id) => {
+     setDisplayFolderId(id);
+  }
+
+  const handleOnClickNote = (id) => {
+    return;
+  }
   
   return (
     <div className="App">
@@ -59,8 +132,10 @@ const App = () => {
             
             <div className="app-sidebar-notes">
                 <NotesList
-                    notes={notes}
+                    notes={displayNotes}
                     handleDeleteNote={deleteNote}
+                    handleOnClickFolder={handleOnClickFolder}
+                    handleOnClickNote={handleOnClickNote}
                 />
             </div>
             <div className="app-sidebar-calendar">
@@ -73,7 +148,7 @@ const App = () => {
         </div>
       <div className='container'>
           <Header></Header>
-          <AddNote handleAddNote={addNote}></AddNote>
+          <AddNote handleAddNote={addNote} handleAddFolders={addFolder} getFolders={showFoldersOnly}></AddNote>
       </div>
     </div>
   );

@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { MdFolder } from 'react-icons/md';
+import NotesList from './NotesList';
 
-const AddNote = ({ handleAddNote }) => {
+const AddNote = ({ handleAddNote, handleAddFolders, getFolders }) => {
 	
 	const [titleText, setTitleText] = useState('');
 	const [noteText, setNoteText] = useState('');
+	const [folderId, setFolderId] = useState(null);
+	const [folderName, setFolderName] = useState("");
 	const characterLimit = 10000;
 	const titleLimit = 1000;
 
@@ -21,11 +25,15 @@ const AddNote = ({ handleAddNote }) => {
 
 	const handleSaveClick = () => {
 		if (noteText.trim().length > 0) {
-			handleAddNote(titleText, noteText);
+			handleAddNote(titleText, noteText, folderName);
 			setTitleText('');
 			setNoteText('');
 		}
 		
+	};
+
+	const handleFolderNameChange = (event) => {
+		setFolderName(event.target.value);
 	};
 
 	return (
@@ -36,6 +44,13 @@ const AddNote = ({ handleAddNote }) => {
 				placeholder= 'Title...'
 				value={titleText}
 				onChange={handleTitleChange}
+			></textarea>
+			<textarea 
+				rows={1}
+				id = 'folder'
+				placeholder= 'Folder...'
+				value={folderName}
+				onChange={handleFolderNameChange}
 			></textarea>
 			<textarea
 				id = 'text'

@@ -1,4 +1,4 @@
-const Note = ({ id, title, text, date, handleDeleteNote }) => {
+const Note = ({ id, title, text, date, handleDeleteNote, handleOnClickNote, handleOnClickFolder}) => {
 	return (
 		<div className='note'>
 			<div className="app-sidebar-note">
