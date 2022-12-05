@@ -11,5 +11,5 @@ ssh $ID $SERV "rm -r ~/$PROJECT;"
 scp $ID -r ../$PROJECT $SERV:~/
 
 # Run code
-ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm install react-scripts; mv depend/react-icons node_modules; npm start;"
+ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm install react-scripts; npm start;"
 ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm start"
