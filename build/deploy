@@ -9,9 +9,7 @@ ID="-i id_rsa.pem"
 # Load source files
 ssh $ID $SERV "rm -r ~/$PROJECT;"
 scp $ID -r ../$PROJECT $SERV:~/
-# Special case for dependency
-scp $ID -r ../node_modules/react-icons $SERV:~/node_modules/
 
 # Run code
-ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm install react-scripts; npm start;"
+ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm install react-scripts; mv depend/react-icons node_modules; npm start;"
 ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm start"
