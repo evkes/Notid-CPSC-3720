@@ -1,0 +1,4 @@
+#!/bin/bash
+SERV=$(<serv.txt)
+ID="-i id_rsa.pem"
+ssh $ID $SERV

@@ -1,0 +1,17 @@
+#!/bin/bash
+SERV=$(<serv.txt)
+PROJECT="notid"
+ID="-i id_rsa.pem"
+# Setup environment
+#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash;
+#ssh $SERV "nvm install 16;node -e console.log('Running Node.js ' + process.version)"
+
+# Load source files
+ssh $ID $SERV "rm -r ~/$PROJECT;"
+scp $ID -r ../$PROJECT $SERV:~/
+# Special case for dependency
+scp $ID -r ../node_modules/react-icons $SERV:~/node_modules/
+
+# Run code
+ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm install react-scripts; npm start;"
+ssh $ID -t $SERV "cd ~/$PROJECT; nvm use 16; npm start"
