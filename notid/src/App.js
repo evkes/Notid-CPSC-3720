@@ -10,18 +10,16 @@ import Search from './components/Search';
 import Note from './components/Note';
 
 const App = () => {
-    //Got a little bit of local storage help, I didn't know how try catch worked:
-    //https://stackoverflow.com/questions/74697558/saving-information-to-localstorage-but-localstorage-is-not-saving-it-on-refresh?noredirect=1#comment131839303_74697558
-    let initialNotes;
+    let loadNotes;
 
     try {
-      initialNotes = JSON.parse(localStorage.getItem('react-notes-app-data'));
+      loadNotes = JSON.parse(localStorage.getItem('notid-notes-and-folder-data'));
     }
-    catch(err) {
-      initialNotes = [];
+    catch(e) {
+      loadNotes = [];
     }
   
-  const [notes, setNotes] = useState(initialNotes);
+  const [notes, setNotes] = useState(loadNotes);
 
   const [displayFolderId, setDisplayFolderId] = useState(null);
 
@@ -29,7 +27,7 @@ const App = () => {
 
 	useEffect(() => {
 		localStorage.setItem(
-			'react-notes-app-data',
+			'notid-notes-and-folder-data',
 			JSON.stringify(notes)
 		);
     setDisplayNotes(notes);
