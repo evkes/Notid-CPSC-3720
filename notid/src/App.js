@@ -43,7 +43,7 @@ const App = () => {
     }
 	}, [displayFolderId]);
 
-  const [setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('');
 
 	const addNote = (title, text, folderTitle = null) => {
 		const date = new Date();
@@ -135,7 +135,9 @@ const App = () => {
             
             <div className="app-sidebar-notes">
                 <NotesList
-                    notes={displayNotes}
+                    notes={displayNotes.filter((note) =>
+                      note.title.includes(searchText)
+                    )}
                     handleDeleteNote={deleteNote}
                     handleOnClickFolder={handleOnClickFolder}
                     handleOnClickNote={handleOnClickNote}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdSearch } from 'react-icons/md';
-
+//https://github.com/chrisblakely01/react-notes-app
 const Search = ({ handleSearchNote }) => {
 	return (
 		<div className='search'>
@@ -10,7 +10,7 @@ const Search = ({ handleSearchNote }) => {
 					handleSearchNote(event.target.value)
 				}
 				type='text'
-				placeholder='Search for a Note:'
+				placeholder='Search for Note By Title:'
 			/>
 		</div>
 	);
