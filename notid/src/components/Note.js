@@ -1,7 +1,7 @@
 const Note = ({ id, title, text, date, handleDeleteNote, handleOnClickNote, handleOnClickFolder}) => {
 	return (
 		<div className='note'>
-			<div className="app-sidebar-note">
+			<div className="app-sidebar-note" onClick = {() => handleOnClickNote}>
                     <div className="sidebar-note-title">
                     
                         <strong>{title}</strong>

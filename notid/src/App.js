@@ -117,7 +117,9 @@ const App = () => {
   }
 
   const handleOnClickNote = (id) => {
-    return;
+    const date = new Date();
+    const noteChosen = notes.filter((note) => note.id === id);
+    return [noteChosen.title, noteChosen.text, date.toLocaleDateString];
   }
   
   return (
@@ -153,7 +155,7 @@ const App = () => {
         </div>
       <div className='container'>
           <Header></Header>
-          <AddNote handleAddNote={addNote} handleAddFolders={addFolder} getFolders={showFoldersOnly}></AddNote>
+          <AddNote handleAddNote={addNote} handleAddFolders={addFolder} getFolders={showFoldersOnly} handleOnClickNote={handleOnClickNote}></AddNote>
       </div>
     </div>
   );

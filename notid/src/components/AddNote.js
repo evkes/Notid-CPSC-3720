@@ -2,14 +2,23 @@ import { useState } from 'react';
 import { MdFolder } from 'react-icons/md';
 import NotesList from './NotesList';
 
-const AddNote = ({ handleAddNote, handleAddFolders, getFolders }) => {
+const AddNote = ({ handleAddNote, handleAddFolders, getFolders, handleOnClickNote }) => {
 	
 	const [titleText, setTitleText] = useState('');
 	const [noteText, setNoteText] = useState('');
+	const [updatedDate, setDate] = useState('');
 	const [folderId, setFolderId] = useState(null);
 	const [folderName, setFolderName] = useState("");
 	const characterLimit = 10000;
 	const titleLimit = 1000;
+
+
+	const noteClick = (id) => {
+		const [titleText, noteText, updatedDate] = handleOnClickNote(id);
+		setTitleText(titleText);
+		setNoteText(noteText);
+		setDate(updatedDate);
+	}
 
 	const handleTitleChange = (event) => {
 		if (titleLimit - event.target.value.length >= 0) {
