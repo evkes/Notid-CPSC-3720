@@ -16,6 +16,7 @@ const App = () => {
     }
     catch(e) {
       loadNotes = [];
+      localStorage.setItem('notid-notes-data', JSON.stringify(notes));
     }
   
   const [notes, setNotes] = useState(loadNotes);
