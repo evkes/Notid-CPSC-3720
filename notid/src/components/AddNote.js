@@ -43,6 +43,7 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 			handleAddNote(titleText, noteText, tagText);
 			setTitleText('');
 			setNoteText('');
+			setTagText('');
 		}
 		
 	};

@@ -57,7 +57,7 @@ const App = () => {
   const handleOnClickNote = (id) => {
     const date = new Date();
     const noteChosen = notes.filter((note) => note.id === id);
-    return [noteChosen.title, noteChosen.text, date.toLocaleDateString];
+    return [noteChosen.title, noteChosen.text, noteChosen.tag, date.toLocaleDateString];
   }
   
   return (
