@@ -1,23 +1,29 @@
 import { useState } from 'react';
-import { MdFolder } from 'react-icons/md';
-import NotesList from './NotesList';
 
-const AddNote = ({ handleAddNote, handleAddFolders, getFolders, handleOnClickNote }) => {
+const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 	
 	const [titleText, setTitleText] = useState('');
 	const [noteText, setNoteText] = useState('');
 	const [updatedDate, setDate] = useState('');
-	const [folderId, setFolderId] = useState(null);
-	const [folderName, setFolderName] = useState("");
+	const [tagText, setTagText] = useState('');
 	const characterLimit = 10000;
 	const titleLimit = 1000;
+	const tagLimit = 1000;
 
 
 	const noteClick = (id) => {
-		const [titleText, noteText, updatedDate] = handleOnClickNote(id);
+		const [titleText, noteText, tagText, updatedDate] = handleOnClickNote(id);
 		setTitleText(titleText);
 		setNoteText(noteText);
+		setTagText(tagText);
 		setDate(updatedDate);
+	}
+	
+
+	const handleTagChange = (event) => {
+		if (tagLimit - event.target.value.length >= 0) {
+			setTagText(event.target.value);
+		}
 	}
 
 	const handleTitleChange = (event) => {
@@ -34,32 +40,28 @@ const AddNote = ({ handleAddNote, handleAddFolders, getFolders, handleOnClickNot
 
 	const handleSaveClick = () => {
 		if (noteText.trim().length > 0) {
-			handleAddNote(titleText, noteText, folderName);
+			handleAddNote(titleText, noteText, tagText);
 			setTitleText('');
 			setNoteText('');
 		}
 		
 	};
 
-	const handleFolderNameChange = (event) => {
-		setFolderName(event.target.value);
-	};
-
 	return (
 		<div className='app-main-new-note'>
+			<textarea 
+				rows={1}
+				id = 'Tag'
+				placeholder= 'Tag...'
+				value={tagText}
+				onChange={handleTagChange}
+			></textarea>
 			<textarea 
 				rows={1}
 				id = 'title'
 				placeholder= 'Title...'
 				value={titleText}
 				onChange={handleTitleChange}
-			></textarea>
-			<textarea 
-				rows={1}
-				id = 'folder'
-				placeholder= 'Folder...'
-				value={folderName}
-				onChange={handleFolderNameChange}
 			></textarea>
 			<textarea
 				id = 'text'
