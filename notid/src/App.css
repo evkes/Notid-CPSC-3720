@@ -305,8 +305,47 @@ textarea {
 .app-main-new-note {
   display: flex;
   flex-direction: column;
+  height: 85%;
 }
 
 .app-main-note-footer {
   margin-top: auto;
+}
+
+.note-container {
+  width: 100%;
+  padding: 10px;
+}
+
+.tag-element, .title-element {
+  min-height: 45px;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.note-element {
+  min-height: 80%;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+  margin-bottom: 15px;
+}
+
+.save-btn {
+  border: 2px solid rgb(94, 190, 222);
+  padding: 13px;
+  border-radius: 8px;
+  background-color: rgb(94, 190, 222);
+  color:white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.search-box {
+  padding: 8px
 }

@@ -90,7 +90,7 @@ const App = () => {
                 />
             </div>   
         </div>
-      <div className='container'>
+      <div className='note-container'>
           <Header></Header>
           <AddNote handleAddNote={addNote} handleOnClickNote={handleOnClickNote}></AddNote>
       </div>

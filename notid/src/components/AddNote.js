@@ -18,7 +18,7 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 		setTagText(tagText);
 		setDate(updatedDate);
 	}
-	
+
 
 	const handleTagChange = (event) => {
 		if (tagLimit - event.target.value.length >= 0) {
@@ -51,6 +51,7 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 	return (
 		<div className='app-main-new-note'>
 			<textarea 
+				className='tag-element'
 				rows={1}
 				id = 'Tag'
 				placeholder= 'Tag...'
@@ -58,6 +59,7 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 				onChange={handleTagChange}
 			></textarea>
 			<textarea 
+				className='title-element'
 				rows={1}
 				id = 'title'
 				placeholder= 'Title...'
@@ -65,13 +67,14 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 				onChange={handleTitleChange}
 			></textarea>
 			<textarea
+				className='note-element'
 				id = 'text'
 				placeholder='Type to add a note...'
 				value={noteText}
 				onChange={handleTextChange}
 			></textarea>
-			<div className='app-main-note-footer'>
-				<button className='save' onClick={handleSaveClick}>
+			<div className='button-container'>
+				<button className='save-btn' onClick={handleSaveClick}>
 					Save
 				</button>
 			</div>

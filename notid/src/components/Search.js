@@ -3,7 +3,7 @@ import { MdSearch } from 'react-icons/md';
 //https://github.com/chrisblakely01/react-notes-app
 const Search = ({ handleSearchNote }) => {
 	return (
-		<div className='search'>
+		<div className='search-box'>
 			<MdSearch className='search-icons' size='1.3em' />
 			<input
 				onChange={(event) =>
