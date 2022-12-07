@@ -10,7 +10,7 @@ const Search = ({ handleSearchNote }) => {
 					handleSearchNote(event.target.value)
 				}
 				type='text'
-				placeholder='Search for Note By Title:'
+				placeholder='Search for Note By Title or Tag:'
 			/>
 		</div>
 	);

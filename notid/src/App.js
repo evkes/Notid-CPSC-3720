@@ -65,7 +65,6 @@ const App = () => {
       <div className="app-sidebar">
             <div className="app-sidebar-header">
                 <h1>NoteID</h1>
-                <button className="add">Add</button>
             </div>
             
             <div className='container'>
@@ -76,7 +75,8 @@ const App = () => {
             <div className="app-sidebar-notes">
                 <NotesList
                     notes={displayNotes.filter((note) =>
-                      note.title.includes(searchText)
+                      note.title.includes(searchText) || 
+                      note.tag.includes(searchText)
                     )}
                     handleDeleteNote={deleteNote}
                     handleOnClickNote={handleOnClickNote}
