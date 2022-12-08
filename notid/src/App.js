@@ -10,30 +10,26 @@ import Search from './components/Search';
 
 const App = () => {
     let loadNotes;
+    loadNotes = JSON.parse(localStorage.getItem('notid-notes-data') || '[]');
 
-    try {
-      loadNotes = JSON.parse(localStorage.getItem('notid-notes-data'));
-    }
-    catch(e) {
-      loadNotes = [];
-      localStorage.setItem('notid-notes-data', JSON.stringify(notes));
-    }
-  
-  const [currentNote, setcurrentNote] = useState({
+  //create a reusable initial value
+  const initialState = {
+    id:'',
     title:'',
     text:'',
     tag:'',
     date:''
-  })
+  }
+  const [currentNote, setCurrentNote] = useState(initialState)
 
   const [notes, setNotes] = useState(loadNotes);
 
-  const [displayNotes, setDisplayNotes] = useState(notes);
+  const [displayNotes, setDisplayNotes] = useState([]);
 
 	useEffect(() => {
 		localStorage.setItem(
 			'notid-notes-data',
-			JSON.stringify(notes)
+			JSON.stringify(notes||[])
 		);
     setDisplayNotes(notes);
 	}, [notes]);
@@ -41,14 +37,29 @@ const App = () => {
 
   const [searchText, setSearchText] = useState('');
 
-	const addNote = (title, text, tag) => {
-		const date = new Date();
+	const addNote = (title, text, tag, id) => {
+    if(id){
+      //if there is an id, remap all notes except the current one where we will need to change its contents
+      const updatedNotes = notes.map((note) => {
+        if(note.id === id){
+          return {...note, title, text, tag, date: new Date().toLocaleDateString("en-GB", {
+            hour: "2-digit", 
+            minute: "2-digit",
+            second: "2-digit",
+          }), }
+        }
+        return note
+      })
+      setNotes(updatedNotes)
+      return
+    }
+    //else do the usual thing
 		const newNote = {
 			id: nanoid(),
       title: title,
 			text: text,
       tag: tag,
-			date: date.toLocaleDateString("en-GB", {
+			date: new Date().toLocaleDateString("en-GB", {
         hour: "2-digit", 
         minute: "2-digit",
         second: "2-digit",
@@ -61,15 +72,25 @@ const App = () => {
 	};
 
 	const handleDeleteNote = (id) => {
+
+    //remove note from editing in case it is there
+    if(currentNote.id ===  id){
+      setCurrentNote(initialState)
+    }
+
+    
 		let newNotes = [...notes];
     newNotes = newNotes.filter((note) => note.id !== id); 
 		setNotes(newNotes);
+    
 	};
 
   const handleOnClickNote = (id) => {
-    const noteChosen = notes.filter((note) => note.id === id);
-    console.log(noteChosen);
-    return noteChosen;
+    //find returns only one element while filter return array
+    const noteChosen = notes.find((note) => note.id === id);
+    if(noteChosen){
+      setCurrentNote(noteChosen)
+    }
   }
 
   return (
@@ -104,7 +125,7 @@ const App = () => {
         </div>
       <div className='note-container'>
           <Header></Header>
-          <AddNote notes={currentNote} setNotes={setcurrentNote} handleAddNote={addNote} handleOnClickNote={handleOnClickNote}></AddNote>
+          <AddNote currentNote={currentNote} setCurrentNote={setCurrentNote} handleAddNote={addNote} handleOnClickNote={handleOnClickNote}></AddNote>
       </div>
     </div>
   );

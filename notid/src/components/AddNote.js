@@ -1,6 +1,5 @@
-import { useState } from 'react';
 
-const AddNote = ({ currentNote, setcurrentNote, handleAddNote, handleOnClickNote }) => {
+const AddNote = ({ currentNote, setCurrentNote, handleAddNote }) => {
 	
 	const characterLimit = 10000;
 	const titleLimit = 1000;
@@ -8,25 +7,25 @@ const AddNote = ({ currentNote, setcurrentNote, handleAddNote, handleOnClickNote
 
 	const handleTagChange = (event) => {
 		if (tagLimit - event.target.value.length >= 0) {
-			setcurrentNote({...currentNote, [event.target.name]: event.target.value});
+			setCurrentNote({...currentNote, [event.target.name]: event.target.value});
 		}
 	}
 
 	const handleTitleChange = (event) => {
 		if (titleLimit - event.target.value.length >= 0) {
-			setcurrentNote({...currentNote, [event.target.name]: event.target.value});
+			setCurrentNote({...currentNote, [event.target.name]: event.target.value});
 		}
 	}
 	
 	const handleTextChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
-			setcurrentNote({...currentNote, [event.target.name]: event.target.value});
+			setCurrentNote({...currentNote, [event.target.name]: event.target.value});
 		}
 	};
 
 	const handleSaveClick = () => {
-		handleAddNote(currentNote.title, currentNote.text, currentNote.tag);
-		setcurrentNote({
+		handleAddNote(currentNote.title, currentNote.text, currentNote.tag, currentNote.id);
+		setCurrentNote({
 			title: '',
 			text: '',
 			tag: '',
