@@ -42,7 +42,7 @@ const App = () => {
       //if there is an id, remap all notes except the current one where we will need to change its contents
       const updatedNotes = notes.map((note) => {
         if(note.id === id){
-          return {...note, title, text, tag, date: new Date().toLocaleDateString("en-GB", {
+          return {...note, title, text, tag, date: new Date().toLocaleDateString("en-US", {
             hour: "2-digit", 
             minute: "2-digit",
             second: "2-digit",
