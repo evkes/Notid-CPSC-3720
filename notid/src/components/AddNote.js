@@ -1,13 +1,7 @@
 import { useState } from 'react';
 
-const AddNote = ({ handleAddNote, handleOnClickNote }) => {
+const AddNote = ({ currentNote, setcurrentNote, handleAddNote, handleOnClickNote }) => {
 	
-	const [currentNote, setcurrentNote] = useState({
-		title:'',
-		text:'',
-		tag:'',
-		date:''
-	})
 	const characterLimit = 10000;
 	const titleLimit = 1000;
 	const tagLimit = 1000;
