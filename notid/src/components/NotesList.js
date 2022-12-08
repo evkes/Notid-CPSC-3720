@@ -8,7 +8,12 @@ const NotesList = ({
 	
 	return (
 		<div className='notes-list'>
-			{notes.map((note) => {
+			{notes.sort(
+				function compare(a, b) {
+					var dateA = new Date(a.date);
+					var dateB = new Date(b.date);
+					return dateB - dateA;
+				  }).map((note) => {
 				return <Note
 					id={note.id}
 					key={note.id}
