@@ -19,6 +19,13 @@ const App = () => {
       localStorage.setItem('notid-notes-data', JSON.stringify(notes));
     }
   
+  const [currentNote, setcurrentNote] = useState({
+    title:'',
+    text:'',
+    tag:'',
+    date:''
+  })
+
   const [notes, setNotes] = useState(loadNotes);
 
   const [displayNotes, setDisplayNotes] = useState(notes);
@@ -97,7 +104,7 @@ const App = () => {
         </div>
       <div className='note-container'>
           <Header></Header>
-          <AddNote handleAddNote={addNote} handleOnClickNote={handleOnClickNote}></AddNote>
+          <AddNote notes={currentNote} setNotes={setcurrentNote} handleAddNote={addNote} handleOnClickNote={handleOnClickNote}></AddNote>
       </div>
     </div>
   );
