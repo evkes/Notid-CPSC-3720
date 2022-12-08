@@ -347,11 +347,29 @@ textarea {
 }
 
 .search-container{
-  width: 30px;
+  width: 100%;
+  margin: auto;
 }
 
 .search-box {
-  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.search-icon {
+  position:absolute;
+  left: 15px;
+  bottom: 15px;
+  font-size: 24px;
+}
+
+.search-input {
+  padding: 8px;
+  padding-left: 32px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .search-box input {
