@@ -2,49 +2,57 @@ import { useState } from 'react';
 
 const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 	
-	const [titleText, setTitleText] = useState('');
-	const [noteText, setNoteText] = useState('');
-	const [updatedDate, setDate] = useState('');
-	const [tagText, setTagText] = useState('');
+	const [notes, setNotes] = useState({
+		title:'',
+		text:'',
+		tag:'',
+		date:''
+	})
 	const characterLimit = 10000;
 	const titleLimit = 1000;
 	const tagLimit = 1000;
 
-
-	const noteClick = (id) => {
-		const [titleText, noteText, tagText, updatedDate] = handleOnClickNote(id);
-		setTitleText(titleText);
-		setNoteText(noteText);
-		setTagText(tagText);
-		setDate(updatedDate);
-	}
-
-
 	const handleTagChange = (event) => {
 		if (tagLimit - event.target.value.length >= 0) {
-			setTagText(event.target.value);
+			setNotes({
+				title: (event.target.value),
+				text: (event.target.value),
+				tag: (event.target.value),
+				date: ''
+			})
 		}
 	}
 
 	const handleTitleChange = (event) => {
 		if (titleLimit - event.target.value.length >= 0) {
-			setTitleText(event.target.value);
+			setNotes({
+				title: (event.target.value),
+				text: (event.target.value),
+				tag: (event.target.value),
+				date: ''
+			})
 		}
 	}
 	
 	const handleTextChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
-			setNoteText(event.target.value);
+			setNotes({
+				title: (event.target.value),
+				text: (event.target.value),
+				tag: (event.target.value),
+				date: ''
+			})
 		}
 	};
 
 	const handleSaveClick = () => {
-		if (noteText.trim().length > 0) {
-			handleAddNote(titleText, noteText, tagText);
-			setTitleText('');
-			setNoteText('');
-			setTagText('');
-		}
+		handleAddNote(notes.title, notes.tag, notes.text);
+		setNotes({
+			title: '',
+			text: '',
+			tag: '',
+			date: ''
+		})
 	};
 
 	return (
@@ -54,7 +62,7 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 				rows={1}
 				id = 'Tag'
 				placeholder= 'Tag...'
-				value={tagText}
+				value={notes.tag}
 				onChange={handleTagChange}
 			></textarea>
 			<textarea 
@@ -62,14 +70,14 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 				rows={1}
 				id = 'title'
 				placeholder= 'Title...'
-				value={titleText}
+				value={notes.title}
 				onChange={handleTitleChange}
 			></textarea>
 			<textarea
 				className='note-element'
 				id = 'text'
 				placeholder='Type to add a note...'
-				value={noteText}
+				value={notes.text}
 				onChange={handleTextChange}
 			></textarea>
 			<div className='button-container'>

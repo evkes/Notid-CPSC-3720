@@ -60,7 +60,6 @@ const App = () => {
 	};
 
   const handleOnClickNote = (id) => {
-    const date = new Date();
     const noteChosen = notes.filter((note) => note.id === id);
     console.log(noteChosen);
     return noteChosen;
