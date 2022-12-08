@@ -22,7 +22,6 @@ const NotesList = ({
 					text={note.text}
 					date={note.date}
 					type={note.type}
-					children={note.notes}
 					handleDeleteNote={handleDeleteNote}
 					handleOnClickNote={handleOnClickNote}				
 					/>
