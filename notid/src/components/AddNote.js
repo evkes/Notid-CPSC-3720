@@ -14,39 +14,24 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 
 	const handleTagChange = (event) => {
 		if (tagLimit - event.target.value.length >= 0) {
-			setNotes({
-				title: (event.target.value),
-				text: (event.target.value),
-				tag: (event.target.value),
-				date: ''
-			})
+			setNotes({...notes, [event.target.name]: event.target.value});
 		}
 	}
 
 	const handleTitleChange = (event) => {
 		if (titleLimit - event.target.value.length >= 0) {
-			setNotes({
-				title: (event.target.value),
-				text: (event.target.value),
-				tag: (event.target.value),
-				date: ''
-			})
+			setNotes({...notes, [event.target.name]: event.target.value});
 		}
 	}
 	
 	const handleTextChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
-			setNotes({
-				title: (event.target.value),
-				text: (event.target.value),
-				tag: (event.target.value),
-				date: ''
-			})
+			setNotes({...notes, [event.target.name]: event.target.value});
 		}
 	};
 
 	const handleSaveClick = () => {
-		handleAddNote(notes.title, notes.tag, notes.text);
+		handleAddNote(notes.title, notes.text, notes.tag);
 		setNotes({
 			title: '',
 			text: '',
@@ -60,24 +45,24 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 			<textarea 
 				className='tag-element'
 				rows={1}
-				id = 'Tag'
 				placeholder= 'Tag...'
 				value={notes.tag}
+				name='tag'
 				onChange={handleTagChange}
 			></textarea>
 			<textarea 
 				className='title-element'
 				rows={1}
-				id = 'title'
 				placeholder= 'Title...'
 				value={notes.title}
+				name='title'
 				onChange={handleTitleChange}
 			></textarea>
 			<textarea
 				className='note-element'
-				id = 'text'
 				placeholder='Type to add a note...'
 				value={notes.text}
+				name = 'text'
 				onChange={handleTextChange}
 			></textarea>
 			<div className='button-container'>
