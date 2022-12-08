@@ -351,5 +351,9 @@ textarea {
 }
 
 .search-box {
-  width: 30px;
+  width: 100%;
+}
+
+.search-box input {
+  width: 1000%
 }
