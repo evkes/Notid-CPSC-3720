@@ -41,7 +41,11 @@ const App = () => {
       title: title,
 			text: text,
       tag: tag,
-			date: date.toLocaleDateString(),
+			date: date.toLocaleDateString("en-GB", {
+        hour: "2-digit", 
+        minute: "2-digit",
+        second: "2-digit",
+      }),
 		};
 		const newNotes = [...notes];
     newNotes.push(newNote);
