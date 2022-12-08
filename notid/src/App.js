@@ -45,7 +45,7 @@ const App = () => {
         hour: "2-digit", 
         minute: "2-digit",
         second: "2-digit",
-      }),
+      }), 
 		};
 		const newNotes = [...notes];
     newNotes.push(newNote);
@@ -64,7 +64,7 @@ const App = () => {
     const noteChosen = notes.filter((note) => note.id === id);
     return [noteChosen.title, noteChosen.text, noteChosen.tag, date.toLocaleDateString];
   }
-  
+
   return (
     <div className="App">
       <div className="app-sidebar">
@@ -72,7 +72,7 @@ const App = () => {
                 <h1>NoteID</h1>
             </div>
             
-            <div className='container'>
+            <div className='search-container'>
                 <Search handleSearchNote={setSearchText} />
                 
         </div>

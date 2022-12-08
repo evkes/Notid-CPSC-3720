@@ -346,6 +346,10 @@ textarea {
   font-weight: 700;
 }
 
+.search-container{
+  width: 30px;
+}
+
 .search-box {
-  padding: 8px
+  width: 30px;
 }
