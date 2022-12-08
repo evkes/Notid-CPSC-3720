@@ -45,7 +45,6 @@ const AddNote = ({ handleAddNote, handleOnClickNote }) => {
 			setNoteText('');
 			setTagText('');
 		}
-		
 	};
 
 	return (

@@ -53,7 +53,7 @@ const App = () => {
     
 	};
 
-	const deleteNote = (id) => {
+	const handleDeleteNote = (id) => {
 		let newNotes = [...notes];
     newNotes = newNotes.filter((note) => note.id !== id); 
 		setNotes(newNotes);
@@ -62,7 +62,8 @@ const App = () => {
   const handleOnClickNote = (id) => {
     const date = new Date();
     const noteChosen = notes.filter((note) => note.id === id);
-    return [noteChosen.title, noteChosen.text, noteChosen.tag, date.toLocaleDateString];
+    console.log(noteChosen);
+    return noteChosen;
   }
 
   return (
@@ -83,7 +84,7 @@ const App = () => {
                       note.title.includes(searchText) || 
                       note.tag.includes(searchText)
                     )}
-                    handleDeleteNote={deleteNote}
+                    handleDeleteNote={handleDeleteNote}
                     handleOnClickNote={handleOnClickNote}
                 />
             </div>
