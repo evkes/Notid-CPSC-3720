@@ -54,3 +54,13 @@ Search is case sensitive, can search by tag or by title
 Cookies are very secure, however we went with localstorage. This is an intereresting research article that discusses the pros and cons of each one: https://www.pivotpointsecurity.com/local-storage-versus-cookies-which-to-use-to-securely-store-session-tokens/#:~:text=Cookies%20are%20intended%20to%20be,localStorage%20can%20store%20more%20data.
 
 For our project, we recognized that cookies store less data and are harder to implement than localstorage JSON parsing. Cookies can only store less data, which is not good for our application that can store large notes. We also had to weigh the pros and cons between the security of cookies and the security of localstorage. While localstorage is less secure than cookies, it stores more data. We do plan on addressing possible security issues in the future by possibly adding some form of authentication for the user to store their information in localstorage.
+
+**User Stories**
+- As a user, I want to open a previously edited note. 
+- As a user, I want to be able to delete a previously written note. 
+- As a user, I want to be able to edit a previously written note. 
+- As a user, I want a search bar so that I can find things quicker. 
+- As a user, I want to have a calendar to see the dates. 
+- As a user, I want the files to be organized as last edited to keep notes organized and recent. 
+- As a user, I want to be able to have a tag on each file to organize the notes. 
+- As a user, I want to store my files on local storage so that I can access them later. 
