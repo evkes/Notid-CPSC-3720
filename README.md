@@ -1,13 +1,16 @@
 # Notid-CPSC-3720
 
-Organized note taking project made for CPSC-3720, a software engineering class at Clemson University. 
+**Project link:**
+http://ec2-50-16-147-5.compute-1.amazonaws.com:3000/
+
+Organized note taking project made for CPSC-3720, a software engineering class at Clemson University.
 
 **Sprint 1 contributors**:
 Kevin Le (kle35 and le515), Evan Kessler (evkes2002 and alt account evkes), Chelsea Van Vulpen (cjvvulpen), and Harrison Langpaul​ (Nesaak)
-Manager and Professor: 
+Manager and Professor:
 Paige Anne Rodeghero (paigerodeghero)
 
-**Sprint 1 scope**: 
+**Sprint 1 scope**:
 List of files, text we can open. Create folders or dividers, a search function, top file most recent. We chose dividers (tags) instead of folders and data stored in local storage.
 
 
@@ -34,7 +37,7 @@ Use
 - How to use react's use effect and use state: https://www.youtube.com/watch?v=0ZJgIjIuY7U
 - How to use React's localstorage: https://blog.logrocket.com/localstorage-javascript-complete-guide/#:~:text=localStorage%20in%20JavaScript.-,What%20is%20localStorage%20in%20JavaScript%3F,the%20browser%20window%20is%20closed.
 - Frontend model inspired by: https://app.grammarly.com/ and github issues
-- Note taking information and front end design: https://github.com/readme/guides/documentation-note-taking 
+- Note taking information and front end design: https://github.com/readme/guides/documentation-note-taking
 - Research on intuitive design: https://cxl.com/blog/intuitive-web-design-how-to-make-your-website-intuitive-to-use/#:~:text=The%20easier%20your%20website%20is,stopping%2C%20even%20for%20a%20second
 
 **How to contribute to this project**:
@@ -56,11 +59,11 @@ Cookies are very secure, however we went with localstorage. This is an intereres
 For our project, we recognized that cookies store less data and are harder to implement than localstorage JSON parsing. Cookies can only store less data, which is not good for our application that can store large notes. We also had to weigh the pros and cons between the security of cookies and the security of localstorage. While localstorage is less secure than cookies, it stores more data. We do plan on addressing possible security issues in the future by possibly adding some form of authentication for the user to store their information in localstorage.
 
 **User Stories**
-- As a user, I want to open a previously edited note. 
-- As a user, I want to be able to delete a previously written note. 
-- As a user, I want to be able to edit a previously written note. 
-- As a user, I want a search bar so that I can find things quicker. 
-- As a user, I want to have a calendar to see the dates. 
-- As a user, I want the files to be organized as last edited to keep notes organized and recent. 
-- As a user, I want to be able to have a tag on each file to organize the notes. 
-- As a user, I want to store my files on local storage so that I can access them later. 
+- As a user, I want to open a previously edited note.
+- As a user, I want to be able to delete a previously written note.
+- As a user, I want to be able to edit a previously written note.
+- As a user, I want a search bar so that I can find things quicker.
+- As a user, I want to have a calendar to see the dates.
+- As a user, I want the files to be organized as last edited to keep notes organized and recent.
+- As a user, I want to be able to have a tag on each file to organize the notes.
+- As a user, I want to store my files on local storage so that I can access them later.
