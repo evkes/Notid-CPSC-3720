@@ -360,3 +360,7 @@ textarea {
   height: 650px;
   padding: 10px;
 }
+
+.header {
+  color: rgb(94, 190, 222);
+}
