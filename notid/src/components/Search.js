@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdSearch } from 'react-icons/md';
-//https://github.com/chrisblakely01/react-notes-app
+//Code inspiration from https://github.com/chrisblakely01/react-notes-app
 const Search = ({ handleSearchNote }) => {
 	return (
 		<div className='search-box'>

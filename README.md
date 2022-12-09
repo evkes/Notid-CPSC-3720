@@ -1,5 +1,33 @@
 # Notid-CPSC-3720
 
-Organized note taking project made for CPSC-3720.
+Organized note taking project made for CPSC-3720, a software engineering class at Clemson University. 
 
-App.css from https://github.com/jrgrimshaw/notes-app-tutorial/blob/main/src/App.css
+Sprint 1 scope: 
+List of files, text we can open. Create folders or dividers, a search function, top file most recent. We chose dividers (tags) instead of folders and data stored in local storage.
+
+APIS Used:
+ {react-icons/md} from 'react' - to add icons to webpage
+ { useState, useEffect } from 'react' - essential for local storage, editing, adding, and removing notes
+ { nanoid } from 'nanoid' - an id that is essential for making notes organized and unique
+ FullCalendar from '@fullcalendar/react' // https://fullcalendar.io/docs/month-view
+ dayGridPlugin from '@fullcalendar/daygrid' - calendar APIs
+
+Helpful resources that guided us through this project:
+Basic React Boilerplate set up from https://github.com/jrgrimshaw/notes-app-tutorial/blob/main/src/App.css
+Ideas for some search functionality, organization from https://github.com/chrisblakely01/react-notes-app
+Pipelineing tutorial for searching and sorting algorithms, with arrays from https://stackoverflow.com/questions/46884394/compare-searching-by-date-reactjs and https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
+Use
+How to use react's use effect and use state: https://www.youtube.com/watch?v=0ZJgIjIuY7U
+How to use React's localstorage: https://blog.logrocket.com/localstorage-javascript-complete-guide/#:~:text=localStorage%20in%20JavaScript.-,What%20is%20localStorage%20in%20JavaScript%3F,the%20browser%20window%20is%20closed.
+
+Plans for Sprint 2:
+When clicking on a note, we will display the notes taken from that day
+Adding folder functionality on top of the tags
+Adding a color choice functionality for tags- https://www.youtube.com/watch?v=senxk5FbsJM or https://casesandberg.github.io/react-color/
+
+Extra information about our project:
+Search is case sensitive, can search by tag or by title
+localStorage is very secure, however this is an intereresting research article that discusses the pros and cons of each one: https://www.pivotpointsecurity.com/local-storage-versus-cookies-which-to-use-to-securely-store-session-tokens/#:~:text=Cookies%20are%20intended%20to%20be,localStorage%20can%20store%20more%20data.
+For our project, we believe that storing more note data is better than the security aspects, as our target demographic will not be harbouring
+government secrets, but rather using this as a fun tool to assist with note taking for class, where data does not need to be as secure. However,
+we may add some encryption and authentication in the future to help make this data more secure. 
