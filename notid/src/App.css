@@ -357,4 +357,6 @@ textarea {
 
 .app-sidebar-calendar {
   font-size: 12px;
+  height: 850px;
+  padding: 10px;
 }
