@@ -97,7 +97,7 @@ const App = () => {
     <div className="App">
       <div className="app-sidebar">
             <div className="app-sidebar-header">
-                <h1>NoteID</h1>
+                <h1>Notid</h1>
             </div>
             
             <div className='search-container'>
