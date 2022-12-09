@@ -17,23 +17,6 @@ body,
   background: url(https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png);
 }
 
-button {
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-  cursor: pointer;
-  color: #08c;
-}
-button:hover {
-  color: #04c;
-}
-
-.App {
-  display: flex;
-}
 
 /* SIDEBAR STYLES */
 
@@ -58,6 +41,7 @@ button:hover {
   flex-shrink: 1;
   overflow-y: scroll;
 }
+
 .app-sidebar-note {
   padding: 25px;
   cursor: pointer;
@@ -95,15 +79,6 @@ button:hover {
 .app-main-note-edit,
 .app-main-note-preview {
   height: 50vh;
-}
-
-.no-active-note {
-  width: 70%;
-  height: 100vh;
-  line-height: 100vh;
-  text-align: center;
-  font-size: 2rem;
-  color: #999;
 }
 
 /* Editing */
@@ -374,4 +349,8 @@ textarea {
 
 .search-box input {
   width: 1000%
+}
+
+.tag-data {
+  color: royalblue;
 }

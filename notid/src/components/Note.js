@@ -3,7 +3,7 @@ const Note = ({ id, tag, title, text, date, handleDeleteNote, handleOnClickNote}
 		<div className='note'>
 			<div className="app-sidebar-note" onClick={() => handleOnClickNote(id)}>
 					<div className = "tag-data">
-						<u>{tag}</u>
+						<div>{tag}</div>
 					</div>
 					<div className="sidebar-note-title">
                         <strong>{title}</strong>
@@ -15,7 +15,7 @@ const Note = ({ id, tag, title, text, date, handleDeleteNote, handleOnClickNote}
 
                     </div>
 
-                <p>{text}</p>
+
                 <small className="note-meta">Last modified {date}</small>
                 
             </div>
