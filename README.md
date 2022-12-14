@@ -6,7 +6,7 @@ http://ec2-50-16-147-5.compute-1.amazonaws.com:3000/
 Organized note taking project made for CPSC-3720, a software engineering class at Clemson University.
 
 **Sprint 1 contributors**:
-Kevin Le (kle35 and le515), Evan Kessler (evkes2002 and alt account evkes), Chelsea Van Vulpen (cjvvulpen), and Harrison Langpaul​ (Nesaak)
+Kevin Le (kle35 and le515), Evan Kessler (evkes and alt account evkes2002), Chelsea Van Vulpen (cjvvulpen), and Harrison Langpaul​ (Nesaak)
 Manager and Professor:
 Paige Anne Rodeghero (paigerodeghero)
 
